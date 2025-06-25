@@ -15,13 +15,13 @@ pipeline {
 
         stage('Clean') {
             steps {
-                sh 'mvn clean'
+                bat 'mvn clean'
             }
         }
 
         stage('Build') {
             steps {
-                sh 'mvn compile'
+                bat 'mvn compile'
             }
         }
 
@@ -29,7 +29,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh 'mvn test'
+                        bat 'mvn test'
                     } catch (Exception e) {
                         currentBuild.result = 'UNSTABLE'
                         echo "Tests failed but marking as unstable to continue pipeline"
